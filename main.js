@@ -8,6 +8,7 @@ window.onload = () => inputButton.addEventListener("click", AddTask);
 function AddTask() {
     if (emptySheet) {
         emptySheet.remove();
+        taskList.style.alignItems = "none";
     }
     taskList.appendChild(FormElement());
     SetTaskText();
