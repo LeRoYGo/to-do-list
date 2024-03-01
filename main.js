@@ -12,6 +12,7 @@ function AddTask() {
     }
     taskList.appendChild(FormElement());
     SetTaskText();
+    inputText.value = "";
 }
 
 function FormElement() {
