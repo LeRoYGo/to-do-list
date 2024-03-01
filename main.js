@@ -4,24 +4,35 @@ const taskList = document.getElementById("taskList");
 const emptySheet = document.getElementById("emptySheet");
 
 function AddTask() {
-    if (emptySheet) {
-        emptySheet.remove();
-        taskList.style.alignItems = "none";
+    if (inputText.value.length == 0) {
+        return;
     }
     taskList.appendChild(FormElement());
-    // document.getElementById("taskButton").addEventListener("click", RemoveTask);
     SetTaskText();
+    CheckStatusBanner();
     inputText.value = "";
+    //document.getElementById("taskButton").addEventListener("click", RemoveTask, false);
 }
 
 function RemoveTask() {
     this.parentNode.remove();
 }
 
+function CheckStatusBanner() {
+    let i = document.querySelectorAll(".task").length;
+    console.log(document.querySelectorAll(".task").length);
+    if (i > 0) {
+        emptySheet.classList.add("none");
+        taskList.style.justifyContent = "flex-start";
+    } else {
+        emptySheet.classList.remove("none");
+        taskList.style.justifyContent = "center";
+    }
+}
+
 function FormElement() {
     const div = document.createElement("div");
     div.setAttribute("class", "task");
-    div.setAttribute("id", "task");
     div.innerHTML = `<p class="task__title"></p>
     <button class="task__button" id="taskButton">
         <svg width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
