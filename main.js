@@ -4,30 +4,27 @@ const taskList = document.getElementById("taskList");
 const emptySheet = document.getElementById("emptySheet");
 
 function AddTask() {
-    if (inputText.value.length == 0) {
-        return;
-    }
+    if (inputText.value.length == 0) return;
+
     taskList.appendChild(FormElement());
     SetTaskText();
     CheckStatusBanner();
     inputText.value = "";
 }
 
-function RemoveTask() {
-    this.parentNode.remove();
+function RemoveTask(target) {
+    target.parentNode.remove();
     CheckStatusBanner();
 }
 
 function CheckStatusBanner() {
-    let i = document.querySelectorAll(".task").length;
-    console.log(document.querySelectorAll(".task").length);
-    if (i > 0) {
+    if (document.querySelectorAll(".task").length > 0) {
         emptySheet.classList.add("none");
         taskList.style.justifyContent = "flex-start";
-    } else {
-        emptySheet.classList.remove("none");
-        taskList.style.justifyContent = "center";
+        return;
     }
+    emptySheet.classList.remove("none");
+    taskList.style.justifyContent = "center";
 }
 
 function FormElement() {
@@ -54,3 +51,14 @@ function SetTaskText() {
 }
 
 window.onload = () => inputButton.addEventListener("click", AddTask);
+taskList.onclick = function (event) {
+    let target = event.target;
+
+    while (target != this) {
+        if (target.tagName == "BUTTON") {
+            RemoveTask(target);
+            return;
+        }
+        target = target.parentNode;
+    }
+};
