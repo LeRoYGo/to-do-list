@@ -34,6 +34,6 @@ function FormElement() {
 }
 
 function SetTaskText() {
-    const taskText = document.querySelector(".task__title");
-    taskText.innerText = inputText.value;
+    const taskText = document.querySelectorAll(".task__title");
+    taskText[taskText.length - 1].innerText = inputText.value;
 }
