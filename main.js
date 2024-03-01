@@ -9,13 +9,13 @@ function AddTask() {
         taskList.style.alignItems = "none";
     }
     taskList.appendChild(FormElement());
-
+    // document.getElementById("taskButton").addEventListener("click", RemoveTask);
     SetTaskText();
     inputText.value = "";
 }
 
-function RemoveTask(task) {
-    task.target.remove();
+function RemoveTask() {
+    this.parentNode.remove();
 }
 
 function FormElement() {
@@ -43,4 +43,3 @@ function SetTaskText() {
 }
 
 window.onload = () => inputButton.addEventListener("click", AddTask);
-taskList.addEventListener("click", RemoveTask, false);
