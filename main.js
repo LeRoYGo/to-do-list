@@ -11,11 +11,11 @@ function AddTask() {
     SetTaskText();
     CheckStatusBanner();
     inputText.value = "";
-    //document.getElementById("taskButton").addEventListener("click", RemoveTask, false);
 }
 
 function RemoveTask() {
     this.parentNode.remove();
+    CheckStatusBanner();
 }
 
 function CheckStatusBanner() {
