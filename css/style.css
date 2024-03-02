@@ -31,7 +31,7 @@ body {
 }
 .header__title {
     text-transform: uppercase;
-    font-size: 64px;
+    font-size: clamp(1.25rem, 0.455rem + 3.98vw, 3.438rem);
     color: #fff;
     position: relative;
     padding: 0 70px;
@@ -101,7 +101,8 @@ body {
 }
 
 .header__input button {
-    width: 142px;
+    padding-left: 10px;
+    padding-right: 10px;
     height: 100%;
     display: block;
     position: absolute;
@@ -109,7 +110,7 @@ body {
     right: -2px;
     background: #4f4f4f;
     border-radius: 20px;
-    font-size: 25px;
+    font-size: clamp(1rem, 0.795rem + 1.02vw, 1.563rem);
     color: #fff;
 }
 
@@ -126,7 +127,8 @@ body {
 
 .emptySheet {
     color: #fff;
-    font-size: 30px;
+    font-size: clamp(1.25rem, 1.023rem + 1.14vw, 1.875rem);
+    text-align: center;
 }
 
 .task {
@@ -139,9 +141,11 @@ body {
     align-items: center;
 }
 .task__title {
-    font-size: 19px;
+    font-size: clamp(1rem, 0.795rem + 1.02vw, 1.563rem);
     color: #fff;
-    padding: 0 10px;
+    margin: 5px;
+    text-wrap: wrap;
+    overflow: hidden;
 }
 .task__button {
     display: flex;
@@ -150,5 +154,14 @@ body {
     background: #999999;
     height: 100%;
     padding: 5px;
+    min-width: 40px;
+    min-height: 40px;
     border-radius: 10px;
+}
+
+.task__button:hover {
+    background: #3e3bdb;
+}
+.header__input button:hover {
+    background: #3e3bdb;
 }

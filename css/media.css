@@ -1,0 +1,38 @@
+@media (max-width: 1024px) {
+    .layout {
+        padding: 50px;
+    }
+    .header__icon {
+        margin-bottom: 40px;
+    }
+    .header__icon:before,
+    .header__icon::after {
+        content: "";
+        width: 100px;
+    }
+    .header__icon:before {
+        left: 25%;
+    }
+    .header__icon::after {
+        right: 25%;
+    }
+    .header__input input {
+        padding-right: 130px;
+    }
+}
+@media (max-width: 653px) {
+    .layout {
+        padding: 15px;
+    }
+    .header__icon {
+        display: none;
+    }
+    .header__input input {
+        padding-right: 110px;
+    }
+}
+@media (max-width: 653px) {
+    .header__input input {
+        padding-right: 100px;
+    }
+}
