@@ -15,7 +15,7 @@ class ToDoList {
     constructor() {
         this._toDoList = [];
     }
-    static updateList(el) {
+    updateList(el) {
         const inputText = document.getElementById("inputText");
 
         if (inputText.value.length <= 0) return;
@@ -27,17 +27,8 @@ class ToDoList {
     }
     removeTask(event) {
         let target = event.target;
-
-        while (target != this) {
-            if (target.tagName == "BUTTON") {
-                console.log(target);
-                console.log(target.parentNode.id);
-                _toDoList.splice(target.parentNode.id - 1, 1);
-                return;
-            }
-
-            target = target.parentNode;
-        }
+        const parentElement = target.closest(".task");
+        // _toDoList.splice(target.parentNode.id - 1, 1);
     }
     createTask(textTask) {
         this._toDoList.push(new Task(textTask));
@@ -82,5 +73,5 @@ const toDoList = new ToDoList();
 taskList.addEventListener("click", toDoList.removeTask);
 window.onload = () =>
     document.getElementById("inputButton").addEventListener("click", () => {
-        ToDoList.updateList(toDoList);
+        toDoList.updateList(toDoList);
     });
