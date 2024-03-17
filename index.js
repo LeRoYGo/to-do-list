@@ -25,10 +25,14 @@ class ToDoList {
         el.addTask();
         inputText.value = "";
     }
-    removeTask(event) {
-        let target = event.target;
-        const parentElement = target.closest(".task");
-        // _toDoList.splice(target.parentNode.id - 1, 1);
+    handleEvent(event) {
+        event.stopPropagation();
+        const target = event.target;
+        const button = target.closest(".task");
+
+        if (button) {
+            console.log(this._toDoList);
+        }
     }
     createTask(textTask) {
         this._toDoList.push(new Task(textTask));
@@ -47,18 +51,18 @@ class ToDoList {
         const div = document.createElement("div");
         div.setAttribute("class", "task");
         div.setAttribute("id", this._toDoList.length);
-        div.innerHTML = `<p class="task__title">${task.description}</p>
-    <button class="task__button" id="taskButton">
-        <svg width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M24.797 6.984H5.203M12.328 12.328v7.125M17.672 12.328v7.125M23.016 6.984v16.922a.89.89 0 0 1-.891.89H7.875a.89.89 0 0 1-.89-.89V6.984M19.453 6.984v-1.78a1.781 1.781 0 0 0-1.781-1.782h-5.344a1.781 1.781 0 0 0-1.781 1.781v1.781"
-                stroke="#222"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-            />
-        </svg>
-    </button>`;
+        div.innerHTML = /*html*/ `<p class="task__title">${task.description}</p>
+      <button class="task__button" id="taskButton">
+         <svg width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path
+                  d="M24.797 6.984H5.203M12.328 12.328v7.125M17.672 12.328v7.125M23.016 6.984v16.922a.89.89 0 0 1-.891.89H7.875a.89.89 0 0 1-.89-.89V6.984M19.453 6.984v-1.78a1.781 1.781 0 0 0-1.781-1.782h-5.344a1.781 1.781 0 0 0-1.781 1.781v1.781"
+                  stroke="#222"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+               />
+         </svg>
+      </button>`;
         return div;
     }
     addTask() {
@@ -70,7 +74,7 @@ class ToDoList {
 const taskList = document.getElementById("taskList");
 const toDoList = new ToDoList();
 
-taskList.addEventListener("click", toDoList.removeTask);
+taskList.addEventListener("click", toDoList);
 window.onload = () =>
     document.getElementById("inputButton").addEventListener("click", () => {
         toDoList.updateList(toDoList);
