@@ -27,16 +27,17 @@ class ToDoList {
     }
     removeTask(event) {
         let target = event.target;
-        console.log(target);
+
         while (target != this) {
             if (target.tagName == "BUTTON") {
-                // _toDoList.splice(target.parentNode.id - 1, 1);
+                console.log(target);
+                console.log(target.parentNode.id);
+                _toDoList.splice(target.parentNode.id - 1, 1);
                 return;
             }
+
             target = target.parentNode;
         }
-
-        //this._toDoList.splice(indexToRemove.id - 1, 1);
     }
     createTask(textTask) {
         this._toDoList.push(new Task(textTask));
